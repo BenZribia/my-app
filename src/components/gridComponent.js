@@ -89,12 +89,11 @@ export default function GridComponent() {
         {[0, 1, 2].map((x, index1) => (
           <div className="row" key={index1}>
             {[1, 2, 3].map((y, index2) => (
-              <div className="col-sm-4 gridCell" key={index2}>
+              <div className="col-sm-4 gridCell d-flex justify-content-center align-items-center" key={index2}>
                 {isMatching(y + 3 * x) && (
                   <img
                     src={whiteTennisBall}
-                    width="150"
-                    height="145"
+                    className="gridCellImage"
                     alt="No Ball"
                   />
                 )}

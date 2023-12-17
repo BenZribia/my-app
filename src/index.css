@@ -8,11 +8,16 @@ body {
 }
 
 .gridCell {
-  height: 150px;
+  height: 33.33vh;
   border: 1px solid #ccc;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.gridCellImage {
+  max-height: 100%;
+  max-width: 100%;
 }
