@@ -1,4 +1,55 @@
-# Getting Started with Create React App
+# 🎾 Tennis Coach Training App
+
+A professional React application designed to help tennis coaches conduct training drills and improve player performance.
+
+## Features
+
+- **Welcome Page**: Professional landing page with exercise selection
+- **Grid Exercise**: 3x3 positioning drill with visual tennis ball indicators
+- **Lights Exercise**: Placeholder for future reaction training (coming soon)
+- **Fullscreen Mode**: Immersive training experience
+- **Auto-Generate Sequences**: Randomly generate drill sequences based on time
+- **Custom Sequences**: Create your own positioning patterns
+- **Responsive Design**: Works on desktop, tablet, and mobile devices
+
+## Quick Start
+
+```bash
+# Install dependencies
+npm install
+
+# Start development server
+npm start
+
+# Build for production
+npm run build
+```
+
+## App Structure
+
+The app uses React Router for navigation:
+
+- `/` - Welcome page with exercise selection
+- `/grid` - Grid Exercise (3x3 positioning drill)
+- `/lights` - Lights Exercise (coming soon)
+
+## Documentation
+
+- **[QUICK_START.md](QUICK_START.md)** - Get started quickly
+- **[USER_GUIDE.md](USER_GUIDE.md)** - Complete user guide
+- **[APP_STRUCTURE_QUICKREF.md](APP_STRUCTURE_QUICKREF.md)** - App structure reference
+- **[ROUTING_IMPLEMENTATION.md](ROUTING_IMPLEMENTATION.md)** - Routing details
+- **[NAVIGATION_MAP.md](NAVIGATION_MAP.md)** - Visual navigation flow
+- **[IMPLEMENTATION_CHECKLIST.md](IMPLEMENTATION_CHECKLIST.md)** - Implementation checklist
+
+## Technology Stack
+
+- React 18.3.1
+- React Router DOM 6.30.3
+- Bootstrap 5.3.8
+- Create React App
+
+---
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
