@@ -496,6 +496,16 @@
   align-items: center;
   justify-content: center;
   padding: 1rem;
+  /* CSS-based fullscreen for iOS and devices without Fullscreen API support */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99999;
+  overflow: hidden;
+  /* iOS specific fixes */
+  -webkit-overflow-scrolling: touch;
+  min-height: -webkit-fill-available;
+  height: 100dvh; /* Dynamic viewport height for iOS */
 }
 
 .active-fullscreen .grid-container {
@@ -998,7 +1008,15 @@
   justify-content: center;
   width: 100vw;
   height: 100vh;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99999;
+  overflow: hidden;
+  /* iOS specific fixes */
+  -webkit-overflow-scrolling: touch;
+  min-height: -webkit-fill-available;
+  height: 100dvh; /* Dynamic viewport height for iOS */
 }
 
 .lights-container {

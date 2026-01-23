@@ -34,7 +34,13 @@ export default function GridComponent() {
   // Handle fullscreen changes
   useEffect(() => {
     const handleFullscreenChange = () => {
-      setIsFullscreen(!!document.fullscreenElement);
+      const isInFullscreen = !!(
+        document.fullscreenElement ||
+        document.webkitFullscreenElement ||
+        document.mozFullScreenElement ||
+        document.msFullscreenElement
+      );
+      setIsFullscreen(isInFullscreen);
     };
 
     document.addEventListener("fullscreenchange", handleFullscreenChange);
@@ -64,7 +70,11 @@ export default function GridComponent() {
     const element = fullscreenRef.current;
     if (!element) return;
 
+    // Add body class to prevent scrolling
+    document.body.classList.add('fullscreen-active');
+
     try {
+      // Try standard fullscreen API
       if (element.requestFullscreen) {
         await element.requestFullscreen();
       } else if (element.webkitRequestFullscreen) {
@@ -73,14 +83,23 @@ export default function GridComponent() {
         await element.mozRequestFullScreen();
       } else if (element.msRequestFullscreen) {
         await element.msRequestFullscreen();
+      } else {
+        // Fallback for iOS and other devices that don't support fullscreen API
+        // Use CSS-based fullscreen simulation
+        setIsFullscreen(true);
       }
     } catch (error) {
-      console.log("Fullscreen request failed:", error);
+      console.log("Fullscreen request failed, using CSS fallback:", error);
+      // If fullscreen fails (like on iPhone), use CSS-based fullscreen
+      setIsFullscreen(true);
     }
   };
 
   // Exit fullscreen
   const exitFullscreen = async () => {
+    // Remove body class to restore scrolling
+    document.body.classList.remove('fullscreen-active');
+
     try {
       if (document.exitFullscreen) {
         await document.exitFullscreen();
@@ -90,9 +109,13 @@ export default function GridComponent() {
         await document.mozCancelFullScreen();
       } else if (document.msExitFullscreen) {
         await document.msExitFullscreen();
+      } else {
+        // Fallback for CSS-based fullscreen
+        setIsFullscreen(false);
       }
     } catch (error) {
-      console.log("Exit fullscreen failed:", error);
+      console.log("Exit fullscreen failed, using CSS fallback:", error);
+      setIsFullscreen(false);
     }
   };
 
